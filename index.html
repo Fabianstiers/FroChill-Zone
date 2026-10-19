@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rashleigh Ian Fabian - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #181818;
+            --card-hover: #282828;
+            --spotify-green: #1DB954;
+            --spotify-green-hover: #1ed760;
+            --text-main: #FFFFFF;
+            --text-sub: #B3B3B3;
+            --border-color: #282828;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .resume-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Header / Hero Section (Spotify Profile Style) */
+        .header {
+            background: linear-gradient(180deg, rgba(29, 185, 84, 0.2) 0%, rgba(18, 18, 18, 1) 100%);
+            padding: 40px;
+            display: flex;
+            align-items: flex-end;
+            gap: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background-color: #282828;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--spotify-green);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            border: 2px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .profile-type {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-main);
+        }
+
+        .profile-name {
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--text-main);
+        }
+
+        .profile-meta {
+            font-size: 0.875rem;
+            color: var(--text-sub);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .profile-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .profile-meta span::after {
+            content: "•";
+            margin-left: 10px;
+            color: var(--text-sub);
+        }
+
+        .profile-meta span:last-child::after {
+            content: "";
+        }
+
+        /* Main Content Layout */
+        .content-body {
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        /* Action Toolbar / Play Button Style */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 0 40px;
+            margin-top: 25px;
+        }
+
+        .play-btn {
+            background-color: var(--spotify-green);
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(29, 185, 84, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.05);
+            background-color: var(--spotify-green-hover);
+        }
+
+        .play-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #000;
+            margin-left: 3px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--text-sub);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* Playlist Track-style Experience List */
+        .track-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .track-item {
+            display: grid;
+            grid-template-columns: 2fr 3fr 1.2fr;
+            padding: 12px 16px;
+            border-radius: 6px;
+            align-items: center;
+            transition: background-color 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .track-item:hover {
+            background-color: var(--card-hover);
+        }
+
+        .track-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .track-name {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .track-company {
+            font-size: 0.8rem;
+            color: var(--spotify-green);
+        }
+
+        .track-desc {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            padding-right: 15px;
+        }
+
+        .track-duration {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            text-align: right;
+        }
+
+        /* Grid Cards for Skills / Education */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 8px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            background-color: var(--card-hover);
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .card-sub {
+            font-size: 0.85rem;
+            color: var(--spotify-green);
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+
+        .skills-list {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        .skills-list li b {
+            color: var(--text-main);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .profile-meta {
+                justify-content: center;
+            }
+            .track-item {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+            .track-duration {
+                text-align: left;
+            }
+            .toolbar {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <!-- Header / Spotify Profile -->
+        <div class="header">
+            <div class="profile-avatar">RI</div>
+            <div class="profile-info">
+                <span class="profile-type">Verified Professional Profile</span>
+                <h1 class="profile-name">Rashleigh Ian Fabian</h1>
+                <div class="profile-meta">
+                    <span>BSIT Student & Support Aspirant</span>
+                    <span>Pampanga, Philippines</span>
+                    <span>09600047627</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toolbar with Play Button & Links -->
+        <div class="toolbar">
+            <button class="play-btn" title="Play Profile Overview">
+                <svg viewBox="0 0 24 24">
+                    <path d="M7 6v12l10-6z"></path>
+                </svg>
+            </button>
+            <div class="contact-links">
+                <a href="mailto:Rashfabsian@gmail.com">Rashfabsian@gmail.com</a>
+                <a href="#availability">Night Shift / Flexible Hours</a>
+                <a href="#education">STI College San Fernando</a>
+            </div>
+        </div>
+
+        <!-- Body Content -->
+        <div class="content-body">
+            
+            <!-- Professional Summary -->
+            <section>
+                <h2 class="section-title">About</h2>
+                <p style="color: var(--text-sub); font-size: 0.95rem; line-height: 1.6;">
+                    Motivated and detail-oriented Bachelor of Science in Information Technology (BSIT) student seeking an entry-level Customer Service Representative or Technical Support Representative position. Combines strong technical troubleshooting capabilities, structured problem-solving, and computer literacy gained from hands-on software development projects with exceptional adaptability and team collaboration. Eager to leverage strong communication and system-handling skills to deliver efficient, professional assistance to customers while pursuing ongoing academic studies.
+                </p>
+            </section>
+
+            <!-- Academic Projects (Track List Style) -->
+            <section>
+                <h2 class="section-title">Project Tracks</h2>
+                <div class="track-list">
+                    
+                    <div class="track-item">
+                        <div class="track-title-group">
+                            <span class="track-name">PDF Encryptor App</span>
+                            <span class="track-company">Python, Tkinter, PyPDF2</span>
+                        </div>
+                        <div class="track-desc">Co-developed a desktop application for document encryption and security, validating inputs to prevent errors.</div>
+                        <div class="track-duration">Academic Project</div>
+                    </div>
+
+                    <div class="track-item">
+                        <div class="track-title-group">
+                            <span class="track-name">Student Registration App</span>
+                            <span class="track-company">C# Windows Forms</span>
+                        </div>
+                        <div class="track-desc">Designed a dynamic application to streamline registration workflows and manage structured data entry.</div>
+                        <div class="track-duration">Academic Project</div>
+                    </div>
+
+                    <div class="track-item">
+                        <div class="track-title-group">
+                            <span class="track-name">Hospital Check-Up Form</span>
+                            <span class="track-company">Group Project Member</span>
+                        </div>
+                        <div class="track-desc">Collaborated in a team to build a form-based healthcare app, standardizing patient input fields for tracking.</div>
+                        <div class="track-duration">Academic Project</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Skills, Education & Info Grid -->
+            <section>
+                <h2 class="section-title">Competencies & Education</h2>
+                <div class="grid-cards">
+                    
+                    <div class="card">
+                        <div class="card-title">Core Competencies</div>
+                        <div class="card-sub">Key Skills</div>
+                        <ul class="skills-list">
+                            <li><b>Technical:</b> Troubleshooting & app testing</li>
+                            <li><b>Communication:</b> Active listening, correspondence</li>
+                            <li><b>Systems:</b> Structured data entry, CRM readiness</li>
+                            <li><b>Adaptability:</b> Open to night & rotational shifts</li>
+                        </ul>
+                    </div>
+
+                    <div class="card" id="education">
+                        <div class="card-title">Education</div>
+                        <div class="card-sub">BSIT • Expected 2028</div>
+                        <div class="card-text">
+                            <b>STI College – San Fernando</b><br>
+                            Third Year Information Technology Student.<br><br>
+                            <b>Senior High School (ICT)</b><br>
+                            La Verdad Christian School.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">Technical Proficiencies</div>
+                        <div class="card-sub">Languages & Tools</div>
+                        <div class="card-text">
+                            <b>Languages:</b> C#, Basic Python, Java, SQL<br>
+                            <b>Tools:</b> Windows Forms, Tkinter, GUI Apps, MS Office Suite, Google Workspace.
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</body>
+</html>
